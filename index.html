@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astana Opt Torg - Оптовые поставки детских товаров</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .header-contacts {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 50%, #ffa45b 100%);
+            padding: 100px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: slideBackground 20s linear infinite;
+        }
+
+        @keyframes slideBackground {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-100px) translateY(-100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #ff6b35;
+            padding: 20px 50px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.6s both, pulse 2s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero-tags {
+            margin-top: 50px;
+            font-size: 14px;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(to bottom, white, #f9f9f9);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+            border-color: #ff6b35;
+        }
+
+        .about-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .about-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-card li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .about-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #fff, #f9f9f9);
+            padding: 50px 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b35, #ff8c42);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.25);
+        }
+
+        .category-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .category-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .category-card li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .category-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            color: #ff6b35;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 30px;
+            border: 2px solid #ff6b35;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background: #ff6b35;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Advantages Section */
+        .advantages {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .advantages .section-title {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .advantages .section-subtitle {
+            color: #ccc;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .advantage-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .advantage-card:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: #ff6b35;
+            transform: translateY(-10px);
+        }
+
+        .advantage-icon {
+            font-size: 64px;
+            margin-bottom: 25px;
+        }
+
+        .advantage-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff8c42;
+        }
+
+        .advantage-card p {
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        /* Steps Section */
+        .steps {
+            background: linear-gradient(to bottom, #f9f9f9, white);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .step-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .step-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-item p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ff6b35;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            padding: 8px 0;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ff6b35;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .quiz-option {
+            padding: 20px;
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .quiz-option:hover {
+            background: #fff;
+            border-color: #ff6b35;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+        .quiz-button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .quiz-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .quiz-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            max-width: 400px;
+            z-index: 9999;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .popup p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .popup-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid,
+            .category-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .popup {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">ASTANA OPT TORG</div>
+                <div class="header-contacts">
+                    <div class="contact-item">📞 +7 (XXX) XXX-XX-XX</div>
+                    <div class="contact-item">📧 info@astanaopt.kz</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Оптовые поставки детской одежды, головных уборов, игрушек и аксессуаров</h1>
+                <h2>Для владельцев магазинов, складов и дистрибьюторов</h2>
+                <p class="hero-subtitle">Прямые поставки от 200+ производителей из Узбекистана, Турции, Кыргызстана, Китая, России</p>
+                <p class="hero-subtitle"><strong>Работаем с 2015 года • 45 000 артикулов • Доставка по Казахстану, СНГ и России • Честный знак для РФ</strong></p>
+                <button class="cta-button" onclick="openQuiz()">Выбрать товары</button>
+                <div class="hero-tags">
+                    Детская одежда от 0 до 16 лет | Товары для новорождённых | Головные уборы | Игрушки | Аксессуары
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Astana Opt Torg — надёжный партнёр для вашего бизнеса</h2>
+            <p class="section-subtitle">Мы — ведущий оптовый поставщик детской одежды, головных уборов и детских товаров. 11+ лет на рынке, прямые поставки от 200+ фабрик из Китая, Турции, России, Узбекистана и Кыргызстана. В портфеле собственные марки: Kiddo, Ymmi, Ornati, Март, Stem. Всё, что нужно вашему магазину, — в одном месте.</p>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🏢 Масштаб и стабильность</h3>
+                    <ul>
+                        <li>Склад 2 000 м² — постоянные остатки, быстрое комплектование</li>
+                        <li>45 000 SKU — ассортимент по сезонам и возрастам</li>
+                        <li>Работаем официально и прозрачно: договор, закрывающие документы, маркировка Честный Знак</li>
+                        <li>Персональный менеджер на связи: подбор ассортимента и сопровождение заказа</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h3>🚚 Доставка по Казахстану, СНГ и РФ</h3>
+                    <ul>
+                        <li>Транспортные партнёры: DPD, Энергия, СДЭК, КИТ, ПЭК</li>
+                        <li>Отправка в день сборки</li>
+                        <li>Доставка по Казахстану от 3 дней</li>
+                        <li>Доставка по России от 5 дней</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <h3>💳 Способы оплаты</h3>
+                    <ul>
+                        <li>СБП</li>
+                        <li>СБП + ЧЗ (УПД придут в ЭДО от организации РФ)</li>
+                        <li>Официальная отгрузка с оплатой на р/с ИП РФ по договору и с предоставлением Честного знака</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="cta-button" onclick="openQuiz()">Подобрать ассортимент</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Категории товаров</h2>
+            <p class="section-subtitle">Широкий ассортимент для вашего магазина</p>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">👶</div>
+                    <h3>Детская одежда (0–16 лет)</h3>
+                    <ul>
+                        <li>Более 25 000 моделей — от нижнего белья до верхней одежды</li>
+                        <li>Собственные бренды — Kiddo</li>
+                        <li>Акции и скидки до 80%</li>
+                        <li>Гибкие условия оплаты и подбора товара</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Узнать подробнее →</a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🧢</div>
+                    <h3>Головные уборы</h3>
+                    <ul>
+                        <li>Более 20 000 артикулов</li>
+                        <li>Мужские, женские, детские, на все сезоны</li>
+                        <li>Бренды: Ornati, Март, Stem, Kiddo</li>
+                        <li>Коллекции еженедельно, скидки за объём</li>
+                    </ul>
+                    <a href="#contact" class="learn-more">Узнать подробнее →</a>
+                </div>

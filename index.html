@@ -1,760 +1,869 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Astana Opt Torg - Оптовые поставки детских товаров</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        overflow-x: hidden;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+      }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23ff6b35" opacity="0.1" width="100" height="100"/></svg>');
-            opacity: 0.3;
-        }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23ff6b35" opacity="0.1" width="100" height="100"/></svg>');
+        opacity: 0.3;
+      }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
 
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff 0%, #ff6b35 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 15px;
+        color: #ff6b35;
+      }
+
+      .hero-subtext {
+        font-size: 1.1rem;
+        color: #ddd;
+        margin-bottom: 30px;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+      }
+
+      .tag {
+        background: rgba(255, 107, 53, 0.2);
+        border: 1px solid #ff6b35;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        color: white;
+        padding: 18px 45px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+      }
+
+      /* About Section */
+      .about {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        text-align: center;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        text-align: center;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .about-card {
+        background: #f8f8f8;
+        padding: 30px;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+      }
+
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-card h3 {
+        color: #ff6b35;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      /* Categories Section */
+      .categories {
+        padding: 80px 0;
+        background: linear-gradient(180deg, #fff 0%, #f8f8f8 100%);
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .category-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+      }
+
+      .category-header {
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .category-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      .category-header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .category-body {
+        padding: 30px;
+      }
+
+      .category-body ul {
+        list-style: none;
+      }
+
+      .category-body li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .category-body li:before {
+        content: "✓";
+        color: #ff6b35;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      /* Benefits Section */
+      .benefits {
+        padding: 80px 0;
+        background: #1a1a1a;
+        color: white;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .benefit-card {
+        text-align: center;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 2px solid rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .benefit-card:hover {
+        background: rgba(255, 107, 53, 0.1);
+        border-color: #ff6b35;
+        transform: scale(1.05);
+      }
+
+      .benefit-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .benefit-card h3 {
+        color: #ff6b35;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+      }
+
+      /* Process Section */
+      .process {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .step {
+        text-align: center;
+        padding: 30px;
+        position: relative;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 20px;
+      }
+
+      .step h3 {
+        color: #1a1a1a;
+        margin-bottom: 10px;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        color: white;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 50px auto 0;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 20px;
+        border: 2px solid rgba(255, 107, 53, 0.3);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ff6b35;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid rgba(255, 107, 53, 0.3);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-size: 1rem;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff6b35;
+      }
+
+      /* Footer */
+      footer {
+        background: #0a0a0a;
+        color: white;
+        padding: 50px 0 30px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        color: #ff6b35;
+        margin-bottom: 20px;
+      }
+
+      .footer-section a {
+        color: #ddd;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #ff6b35;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+      }
+
+      /* Modal/Quiz */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 50px;
+        border-radius: 20px;
+        max-width: 600px;
+        width: 90%;
+        position: relative;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .quiz-options {
+        display: grid;
+        gap: 15px;
+        margin: 30px 0;
+      }
+
+      .quiz-option {
+        padding: 20px;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .quiz-option:hover {
+        border-color: #ff6b35;
+        background: #fff5f2;
+      }
+
+      @media (max-width: 768px) {
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 0%, #ff6b35 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+          font-size: 2rem;
         }
 
         .hero h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-            color: #ff6b35;
-        }
-
-        .hero-subtext {
-            font-size: 1.1rem;
-            color: #ddd;
-            margin-bottom: 30px;
-        }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .tag {
-            background: rgba(255, 107, 53, 0.2);
-            border: 1px solid #ff6b35;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            color: white;
-            padding: 18px 45px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: white;
+          font-size: 1.2rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            text-align: center;
+          font-size: 2rem;
         }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .about-card {
-            background: #f8f8f8;
-            padding: 30px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .about-card h3 {
-            color: #ff6b35;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* Categories Section */
-        .categories {
-            padding: 80px 0;
-            background: linear-gradient(180deg, #fff 0%, #f8f8f8 100%);
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
-        }
-
-        .category-header {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .category-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .category-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .category-body {
-            padding: 30px;
-        }
-
-        .category-body ul {
-            list-style: none;
-        }
-
-        .category-body li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .category-body li:before {
-            content: '✓';
-            color: #ff6b35;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 80px 0;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            background: rgba(255, 107, 53, 0.1);
-            border-color: #ff6b35;
-            transform: scale(1.05);
-        }
-
-        .benefit-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .benefit-card h3 {
-            color: #ff6b35;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        /* Process Section */
-        .process {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .step {
-            text-align: center;
-            padding: 30px;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 20px;
-        }
-
-        .step h3 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 50px auto 0;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 53, 0.3);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #ff6b35;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid rgba(255, 107, 53, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ff6b35;
-        }
-
-        /* Footer */
-        footer {
-            background: #0a0a0a;
-            color: white;
-            padding: 50px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            color: #ff6b35;
-            margin-bottom: 20px;
-        }
-
-        .footer-section a {
-            color: #ddd;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: #ff6b35;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
-        }
-
-        /* Modal/Quiz */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .quiz-option {
-            padding: 20px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .quiz-option:hover {
-            border-color: #ff6b35;
-            background: #fff5f2;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Оптовые поставки детской одежды, головных уборов, игрушек и аксессуаров</h1>
-                <h2>Для владельцев магазинов, складов и дистрибьюторов</h2>
-                <p class="hero-subtext">Прямые поставки от 200+ производителей из Узбекистана, Турции, Кыргызстана, Китая, России и других стран</p>
-                <p class="hero-subtext">✓ Работаем с 2015 года  ✓ 45 000 артикулов  ✓ Доставка по Казахстану, СНГ и России  ✓ Честный знак для РФ</p>
-                <div class="hero-tags">
-                    <span class="tag">Детская одежда от 0 до 16 лет</span>
-                    <span class="tag">Товары для новорождённых</span>
-                    <span class="tag">Головные уборы</span>
-                    <span class="tag">Игрушки</span>
-                    <span class="tag">Аксессуары</span>
-                </div>
-                <button class="cta-button" onclick="openQuiz()">Выбрать товары</button>
-            </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            Оптовые поставки детской одежды, головных уборов, игрушек и
+            аксессуаров
+          </h1>
+          <h2>Для владельцев магазинов, складов и дистрибьюторов</h2>
+          <p class="hero-subtext">
+            Прямые поставки от 200+ производителей из Узбекистана, Турции,
+            Кыргызстана, Китая, России и других стран
+          </p>
+          <p class="hero-subtext">
+            ✓ Работаем с 2015 года ✓ 45 000 артикулов ✓ Доставка по Казахстану,
+            СНГ и России ✓ Честный знак для РФ
+          </p>
+          <div class="hero-tags">
+            <span class="tag">Детская одежда от 0 до 16 лет</span>
+            <span class="tag">Товары для новорождённых</span>
+            <span class="tag">Головные уборы</span>
+            <span class="tag">Игрушки</span>
+            <span class="tag">Аксессуары</span>
+          </div>
+          <button class="cta-button" onclick="openQuiz()">
+            Выбрать товары
+          </button>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section class="about">
-        <div class="container">
-            <h2 class="section-title">Astana Opt Torg — надёжный партнёр для вашего бизнеса</h2>
-            <p class="section-subtitle">Мы — ведущий оптовый поставщик детской одежды, головных уборов и детских товаров. 11+ лет на рынке, прямые поставки от 200+ фабрик из Китая, Турции, России, Узбекистана и Кыргызстана. В портфеле собственные марки: Kiddo, Ymmi, Ornati, Март, Stem.</p>
-            
-            <div class="about-content">
-                <div class="about-card">
-                    <h3>🏢 Масштаб и стабильность</h3>
-                    <p>Склад 2 000 м² — постоянные остатки, быстрое комплектование. 45 000 SKU — ассортимент по сезонам и возрастам.</p>
-                </div>
-                <div class="about-card">
-                    <h3>📋 Официально и прозрачно</h3>
-                    <p>Договор, закрывающие документы, маркировка Честный Знак. Персональный менеджер на связи.</p>
-                </div>
-                <div class="about-card">
-                    <h3>🚚 Доставка</h3>
-                    <p>Транспортные партнёры: DPD, Энергия, СДЭК, КИТ, ПЭК. Отправка в день сборки.</p>
-                </div>
-                <div class="about-card">
-                    <h3>💳 Способы оплаты</h3>
-                    <p>СБП, СБП + ЧЗ, официальная отгрузка с оплатой на р/с ИП РФ по договору.</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="cta-button" onclick="openQuiz()">Подобрать ассортимент</button>
-            </div>
+      <div class="container">
+        <h2 class="section-title">
+          Astana Opt Torg — надёжный партнёр для вашего бизнеса
+        </h2>
+        <p class="section-subtitle">
+          Мы — ведущий оптовый поставщик детской одежды, головных уборов и
+          детских товаров. 11+ лет на рынке, прямые поставки от 200+ фабрик из
+          Китая, Турции, России, Узбекистана и Кыргызстана. В портфеле
+          собственные марки: Kiddo, Ymmi, Ornati, Март, Stem.
+        </p>
+
+        <div class="about-content">
+          <div class="about-card">
+            <h3>🏢 Масштаб и стабильность</h3>
+            <p>
+              Склад 2 000 м² — постоянные остатки, быстрое комплектование. 45
+              000 SKU — ассортимент по сезонам и возрастам.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>📋 Официально и прозрачно</h3>
+            <p>
+              Договор, закрывающие документы, маркировка Честный Знак.
+              Персональный менеджер на связи.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>🚚 Доставка</h3>
+            <p>
+              Транспортные партнёры: DPD, Энергия, СДЭК, КИТ, ПЭК. Отправка в
+              день сборки.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>💳 Способы оплаты</h3>
+            <p>
+              СБП, СБП + ЧЗ, официальная отгрузка с оплатой на р/с ИП РФ по
+              договору.
+            </p>
+          </div>
         </div>
+
+        <div style="text-align: center; margin-top: 50px">
+          <button class="cta-button" onclick="openQuiz()">
+            Подобрать ассортимент
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Categories Section -->
     <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Категории товаров</h2>
-            
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="category-header">
-                        <div class="category-icon">👕</div>
-                        <h3>Детская одежда</h3>
-                        <p>От 0 до 16 лет</p>
-                    </div>
-                    <div class="category-body">
-                        <ul>
-                            <li>Более 25 000 моделей</li>
-                            <li>Собственный бренд Kiddo</li>
-                            <li>Акции и скидки до 80%</li>
-                            <li>От нижнего белья до верхней одежды</li>
-                        </ul>
-                        <button class="cta-button" style="margin-top: 20px; width: 100%;" onclick="openQuiz()">Узнать подробнее</button>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Категории товаров</h2>
 
-                <div class="category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🧢</div>
-                        <h3>Головные уборы</h3>
-                        <p>Мужские, женские, детские</p>
-                    </div>
-                    <div class="category-body">
-                        <ul>
-                            <li>Более 20 000 артикулов</li>
-                            <li>Бренды: Ornati, Март, Stem, Kiddo</li>
-                            <li>Коллекции еженедельно</li>
-                            <li>Скидки за объём</li>
-                        </ul>
-                        <button class="cta-button" style="margin-top: 20px; width: 100%;" onclick="openQuiz()">Узнать подробнее</button>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header">
-                        <div class="category-icon">👶</div>
-                        <h3>Товары для новорождённых</h3>
-                        <p>Всё необходимое</p>
-                    </div>
-                    <div class="category-body">
-                        <ul>
-                            <li>Собственный бренд Ymmi</li>
-                            <li>Сертифицированная продукция</li>
-                            <li>Безопасные материалы</li>
-                            <li>От пелёнок до силиконовой посуды</li>
-                        </ul>
-                        <button class="cta-button" style="margin-top: 20px; width: 100%;" onclick="openQuiz()">Узнать подробнее</button>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🧸</div>
-                        <h3>Игрушки</h3>
-                        <p>Развивающие и не только</p>
-                    </div>
-                    <div class="category-body">
-                        <ul>
-                            <li>Развивающие игрушки</li>
-                            <li>Конструкторы, машинки, лего</li>
-                            <li>Можно заказывать поштучно</li>
-                            <li>Новинки каждую неделю</li>
-                        </ul>
-                        <button class="cta-button" style="margin-top: 20px; width: 100%;" onclick="openQuiz()">Узнать подробнее</button>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="category-header">
-                        <div class="category-icon">🧤</div>
-                        <h3>Аксессуары</h3>
-                        <p>5 000+ моделей</p>
-                    </div>
-                    <div class="category-body">
-                        <ul>
-                            <li>Перчатки, шарфы, варежки</li>
-                            <li>Прямые поставки</li>
-                            <li>Низкие цены</li>
-                            <li>Дополнение к основному ассортименту</li>
-                        </ul>
-                        <button class="cta-button" style="margin-top: 20px; width: 100%;" onclick="openQuiz()">Узнать подробнее</button>
-                    </div>
-                </div>
+        <div class="category-grid">
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">👕</div>
+              <h3>Детская одежда</h3>
+              <p>От 0 до 16 лет</p>
             </div>
+            <div class="category-body">
+              <ul>
+                <li>Более 25 000 моделей</li>
+                <li>Собственный бренд Kiddo</li>
+                <li>Акции и скидки до 80%</li>
+                <li>От нижнего белья до верхней одежды</li>
+              </ul>
+              <button
+                class="cta-button"
+                style="margin-top: 20px; width: 100%"
+                onclick="openQuiz()"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🧢</div>
+              <h3>Головные уборы</h3>
+              <p>Мужские, женские, детские</p>
+            </div>
+            <div class="category-body">
+              <ul>
+                <li>Более 20 000 артикулов</li>
+                <li>Бренды: Ornati, Март, Stem, Kiddo</li>
+                <li>Коллекции еженедельно</li>
+                <li>Скидки за объём</li>
+              </ul>
+              <button
+                class="cta-button"
+                style="margin-top: 20px; width: 100%"
+                onclick="openQuiz()"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">👶</div>
+              <h3>Товары для новорождённых</h3>
+              <p>Всё необходимое</p>
+            </div>
+            <div class="category-body">
+              <ul>
+                <li>Собственный бренд Ymmi</li>
+                <li>Сертифицированная продукция</li>
+                <li>Безопасные материалы</li>
+                <li>От пелёнок до силиконовой посуды</li>
+              </ul>
+              <button
+                class="cta-button"
+                style="margin-top: 20px; width: 100%"
+                onclick="openQuiz()"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🧸</div>
+              <h3>Игрушки</h3>
+              <p>Развивающие и не только</p>
+            </div>
+            <div class="category-body">
+              <ul>
+                <li>Развивающие игрушки</li>
+                <li>Конструкторы, машинки, лего</li>
+                <li>Можно заказывать поштучно</li>
+                <li>Новинки каждую неделю</li>
+              </ul>
+              <button
+                class="cta-button"
+                style="margin-top: 20px; width: 100%"
+                onclick="openQuiz()"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-header">
+              <div class="category-icon">🧤</div>
+              <h3>Аксессуары</h3>
+              <p>5 000+ моделей</p>
+            </div>
+            <div class="category-body">
+              <ul>
+                <li>Перчатки, шарфы, варежки</li>
+                <li>Прямые поставки</li>
+                <li>Низкие цены</li>
+                <li>Дополнение к основному ассортименту</li>
+              </ul>
+              <button
+                class="cta-button"
+                style="margin-top: 20px; width: 100%"
+                onclick="openQuiz()"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Benefits Section -->
     <section class="benefits">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Преимущества сотрудничества</h2>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏬</div>
-                    <h3>Огромный ассортимент</h3>
-                    <p>Более 45 000 SKU в 5 категориях. Товары в наличии на собственном складе 2000 кв.м.</p>
-                </div>
+      <div class="container">
+        <h2 class="section-title" style="color: white">
+          Преимущества сотрудничества
+        </h2>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">🌍</div>
-                    <h3>Прямые поставки</h3>
-                    <p>От 200+ производителей из Китая, Турции, России, Узбекистана, Кыргызстана.</p>
-                </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">🏬</div>
+            <h3>Огромный ассортимент</h3>
+            <p>
+              Более 45 000 SKU в 5 категориях. Товары в наличии на собственном
+              складе 2000 кв.м.
+            </p>
+          </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">🧸</div>
-                    <h3>Собственные бренды</h3>
-                    <p>Kiddo, Ymmi, Ornati, Март, Stem — контроль качества и уникальность.</p>
-                </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🌍</div>
+            <h3>Прямые поставки</h3>
+            <p>
+              От 200+ производителей из Китая, Турции, России, Узбекистана,
+              Кыргызстана.
+            </p>
+          </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h3>Быстрая доставка</h3>
-                    <p>По Казахстану от 3 дней, по России от 5 дней. Регулярные поставки каждую неделю.</p>
-                </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🧸</div>
+            <h3>Собственные бренды</h3>
+            <p>
+              Kiddo, Ymmi, Ornati, Март, Stem — контроль качества и
+              уникальность.
+            </p>
+          </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">💬</div>
-                    <h3>Гибкие условия</h3>
-                    <p>Подбор товара по фото, видеозвонку или лично. Система скидок и прозрачные возвраты.</p>
-                </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h3>Быстрая доставка</h3>
+            <p>
+              По Казахстану от 3 дней, по России от 5 дней. Регулярные поставки
+              каждую неделю.
+            </p>
+          </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏆</div>
-                    <h3>11 лет опыта</h3>
-                    <p>Надёжный партнёр. Работаем официально, предоставляем честный знак для России.</p>
-                </div>
-            </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💬</div>
+            <h3>Гибкие условия</h3>
+            <p>
+              Подбор товара по фото, видеозвонку или лично. Система скидок и
+              прозрачные возвраты.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🏆</div>
+            <h3>11 лет опыта</h3>
+            <p>
+              Надёжный партнёр. Работаем официально, предоставляем честный знак
+              для России.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Process Section -->
     <section class="process">
-        <div class="container">
-            <h2 class="section-title">Как начать сотрудничество</h2>
-            
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Оставляете заявку</h3>
-                    <p>Указываете контакт и формат магазина</p>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Как начать сотрудничество</h2>
 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Менеджер связывается</h3>
-                    <p>Уточняет потребности и ассортимент</p>
-                </div>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Оставляете заявку</h3>
+            <p>Указываете контакт и формат магазина</p>
+          </div>
 
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Согласовываем условия</h3>
-                    <p>Подбираем товар и объём поставки</p>
-                </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Менеджер связывается</h3>
+            <p>Уточняет потребности и ассортимент</p>
+          </div>
 
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Получаете заказ</h3>
-                    <p>Быстро и без рисков</p>
-                </div>
-            </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Согласовываем условия</h3>
+            <p>Подбираем товар и объём поставки</p>
+          </div>
 
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="cta-button" onclick="document.querySelector('.contact').scrollIntoView({behavior: 'smooth'})">Оставить заявку на сотрудничество</button>
-            </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Получаете заказ</h3>
+            <p>Быстро и без рисков</p>
+          </div>
         </div>
+
+        <div style="text-align: center; margin-top: 50px">
+          <button
+            class="cta-button"
+            onclick="document.querySelector('.contact').scrollIntoView({behavior: 'smooth'})"
+          >
+            Оставить заявку на сотрудничество
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Оставьте заявку</h2>
-            <p class="section-subtitle" style="color: #ddd;">Менеджер свяжется с вами в течение дня. Мы подберём выгодные условия поставки и ответим на все вопросы.</p>
-            
-            <form class="contact-form" onsubmit="submitForm(event)">
-                <div class="form-group">
-                    <label>Имя *</label>
-                    <input type="text" required placeholder="Введите ваше имя">
-                </div>
-                <div class="form-group">
-                    <label>Компания</label>
-                    <input type="text" placeholder="Название компании">
-                </div>
-                <div class="form-group">
-                    <label>Телефон *</label>
-                    <input type="tel" required placeholder="+7 (___) ___-__-__">
-                </div>
-                <div class="form-group">
-                    <label>Комментарий</label>
-                    <textarea rows="4" placeholder="Расскажите о ваших потребностях"></textarea>
-                </div>
-                <button type="submit" class="cta-button" style="width: 100%;">Отправить заявку</button>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #888; text-align: center;">Менеджер свяжется в течение 15 минут</p>
-            </form>
+      <div class="container">
+        <h2 class="section-title" style="color: white">Оставьте заявку</h2>
+        <p class="section-subtitle" style="color: #ddd">
+          Менеджер свяжется с вами в течение дня. Мы подберём выгодные условия
+          поставки и ответим на все вопросы.
+        </p>
 
-            <div style="text-align: center; margin-top: 50px; color: white;">
-                <h3 style="color: #ff6b35; margin-bottom: 20px;">Контакты</h3>
-                <p>📞 Телефон: +7 (XXX) XXX-XX-XX</p>
-                <p>📧 Email: info@astanaopttorg.kz</p>
-                <p>💬 WhatsApp | Telegram</p>
-                <p>📍 Астана, Казахстан</p>
-                <p>🕒 График работы: Пн-Сб 9:00-18:00</p>
-            </div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label>Имя *</label>
+            <input type="text" required placeholder="Введите ваше имя" />
+          </div>
+          <div class="form-group">
+            <label>Компания</label>
+            <input type="text" placeholder="Название компании" />
+          </div>
+          <div class="form-group">
+            <label>Телефон *</label>
+            <input type="tel" required placeholder="+7 (___) ___-__-__" />
+          </div>
+          <div class="form-group">
+            <label>Комментарий</label>
+            <textarea
+              rows="4"
+              placeholder="Расскажите о ваших потребностях"
+            ></textarea>
+          </div>
+          <button type="submit" class="cta-button" style="width: 100%">
+            Отправить заявку
+          </button>
+          <p
+            style="
+              margin-top: 15px;
+              font-size: 0.9rem;
+              color: #888;
+              text-align: center;
+            "
+          >
+            Менеджер свяжется в течение 15 минут
+          </p>
+        </form>
+
+        <div style="text-align: center; margin-top: 50px; color: white">
+          <h3 style="color: #ff6b35; margin-bottom: 20px">Контакты</h3>
+          <p>📞 Телефон: +7 (XXX) XXX-XX-XX</p>
+          <p>📧 Email: info@astanaopttorg.kz</p>
+          <p>💬 WhatsApp | Telegram</p>
+          <p>📍 Астана, Казахстан</p>
+          <p>🕒 График работы: Пн-Сб 9:00-18:00</p>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Astana Opt Torg</h3>
-                    <p>Ваш надёжный оптовый партнёр с 2015 года</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Навигация</h3>
-                    <a href="#hero">Главная</a>
-                    <a href="#about">О компании</a>
-                    <a href="#categories">Категории</a>
-                    <a href="#benefits">Преимущества</a>
-                    <a href="#contact">Контакты</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Категории товаров</h3>
-                    <a href="#">Детская одежда</a>
-                    <a href="#">Головные уборы</a>
-                    <a href="#">Товары для новорождённых</a>
-                    <a href="#">Игрушки</a>
-                    <a href="#">Аксессуары</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <a href="tel:+">Телефон</a>
-                    <a href="mailto:">Email</a>
-                    <a href="#">WhatsApp</a>
-                    <a href="#">Telegram</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Astana Opt Torg. Все права защищены.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Astana Opt Torg</h3>
+            <p>Ваш надёжный оптовый партнёр с 2015 года</p>
+          </div>
+          <div class="footer-section">
+            <h3>Навигация</h3>
+            <a href="#hero">Главная</a>
+            <a href="#about">О компании</a>
+            <a href="#categories">Категории</a>
+            <a href="#benefits">Преимущества</a>
+            <a href="#contact">Контакты</a>
+          </div>
+          <div class="footer-section">
+            <h3>Категории товаров</h3>
+            <a href="#">Детская одежда</a>
+            <a href="#">Головные уборы</a>
+            <a href="#">Товары для новорождённых</a>
+            <a href="#">Игрушки</a>
+            <a href="#">Аксессуары</a>
+          </div>
+          <div class="footer-section">
+            <h3>Контакты</h3>
+            <a href="tel:+">Телефон</a>
+            <a href="mailto:">Email</a>
+            <a href="#">WhatsApp</a>
+            <a href="#">Telegram</a>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Astana Opt Torg. Все права защищены.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Quiz Modal -->
     <div class="modal" id="quizModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeQuiz()">&times;</span>
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeQuiz()">&times;</span>
+      </div>
+    </div>
+  </body>
+</html>
